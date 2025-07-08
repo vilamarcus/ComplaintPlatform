@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.complaintplatform_backend.dao.ExampleDao">
+
+    <resultMap id="exampleResultMap" type="com.example.complaintplatform_backend.entity.Example">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="findByNameContaining" resultMap="exampleResultMap">
+        SELECT * FROM example WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+    <select id="findById" resultMap="exampleResultMap">
+        SELECT * FROM example WHERE id = #{id}
+    </select>
+
+    <select id="countByName" resultType="long">
+        SELECT COUNT(*) FROM example WHERE name = #{name}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO example (name, description, create_time, update_time)
+        VALUES (#{name}, #{description}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="update">
+        UPDATE example
+        SET name = #{name},
+            description = #{description},
+            update_time = #{updateTime}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM example WHERE id = #{id}
+    </delete>
+</mapper>

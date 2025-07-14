@@ -1,12 +1,25 @@
-import Vue from 'vue'
+
+
+
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
-Vue.config.productionTip = false
+import '@/assets/global.css'
+import zhCn from "element-plus/es/locale/lang/zh-cn"
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App)
+
+app.use(router)
+app.use(ElementPlus,{
+    locale: zhCn,
+})
+
+for(const [key,component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
+
+app.mount('#app')

@@ -1,5 +1,5 @@
-<!--网页名:Home 首页-->
-<!--域名:/-->
+<!--网页名:Idea 意见建议-->
+<!--域名:/idea-->
 <!--页面布局: 顶部导航栏、左中右行列布局-->
 <!--依赖库版本:{-->
 
@@ -15,7 +15,6 @@
 <!--    "vite": "^7.0.0",-->
 <!--    "vite-plugin-vue-devtools": "^7.7.7"}-->
 <!--@使用 IDEA 2024.3.5 开发@-->
-
 
 
 
@@ -76,105 +75,11 @@
         <el-row :gutter="20" >
           <!-- 左侧帖子列表 -->
           <el-col :span="16" >
-<!--            <el-tabs v-model="activeTab" type="card" style="margin-bottom: 20px;" >-->
-<!--              <el-tab-pane label="发布时间" name="time"></el-tab-pane>-->
-<!--              <el-tab-pane label="点赞数" name="likes"></el-tab-pane>-->
-<!--              <el-tab-pane label="跟帖数" name="comments"></el-tab-pane>-->
-<!--              <el-tab-pane label="关注度" name="attention"></el-tab-pane>-->
-<!--            </el-tabs>-->
-            <el-tabs v-model="categoryTab" type="card" style="width: 100%; margin-top: 20px; font-weight: bold">
-              <el-tab-pane label="全部" name="all"></el-tab-pane>
-              <el-tab-pane label="教育训练" name="education"></el-tab-pane>
-              <el-tab-pane label="科研工作" name="research"></el-tab-pane>
-              <el-tab-pane label="政治工作" name="politics"></el-tab-pane>
-              <el-tab-pane label="管理保障" name="management"></el-tab-pane>
-              <el-tab-pane label="纪检监察" name="supervision"></el-tab-pane>
-              <el-tab-pane label="研究生教育" name="graduate"></el-tab-pane>
-              <el-tab-pane label="其他" name="other"></el-tab-pane>
-            </el-tabs>
-            <el-tabs type="border-card" class="demo-tabs">
-              <el-tab-pane>
-                <template #label>
-                    <span class="custom-tabs-label">
-                      <el-icon  style="margin-right: 4px;"><timer /></el-icon>
-                      <span >发布时间</span>
-                    </span>
-                </template>
-                <div v-for="(post, index) in postsForTime" :key="index" class="post-card">
-                  <div class="post-header">
-                    <img :src="post.user.avatar" alt="User Avatar" class="avatar" />
-                    <span>{{ post.user.username }}</span>
-                    <span>{{ post.user.fans }} 粉丝 | {{ post.user.posts }} 帖子</span>
-                    <el-button size="small" type="primary" round>关注</el-button>
-                  </div>
-                  <div class="post-content">
-                    <el-tag type="info">{{ post.category }}</el-tag>
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.content }}</p>
-                  </div>
-                  <div class="post-footer">
-                    <span>{{ post.timeAgo }}</span>
-                    <el-button  circle><el-icon style="color: #2b9bc1;" size="large"><Star /></el-icon></el-button>
-                    <el-button  circle><el-icon style="color: #2b9bc1;" size="large"><ChatLineSquare /></el-icon></el-button>
-                    <el-button circle>{{ post.likes }} <el-icon style="color: #2b9bc1;" size="large"><Pointer /></el-icon></el-button>
-                  </div>
-                </div>
-              </el-tab-pane>
-              <el-tab-pane>
-                <template #label>
-                    <span class="custom-tabs-label">
-                      <el-icon style="margin-right: 5px;"><Star /></el-icon>
-                      <span>点赞数</span>
-                    </span>
-                </template>
-                <div v-for="(post, index) in postsForLikes" :key="index" class="post-card">
-                  <div class="post-header">
-                    <img :src="post.user.avatar" alt="User Avatar" class="avatar" />
-                    <span>{{ post.user.username }}</span>
-                    <span>{{ post.user.fans }} 粉丝 | {{ post.user.posts }} 帖子</span>
-                    <el-button size="small" type="primary" round>关注</el-button>
-                  </div>
-                  <div class="post-content">
-                    <el-tag type="info">{{ post.category }}</el-tag>
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.content }}</p>
-                  </div>
-                  <div class="post-footer">
-                    <span>{{ post.timeAgo }}</span>
-                    <el-button  circle><el-icon style="color: #2b9bc1;" size="large"><Star /></el-icon></el-button>
-                    <el-button  circle><el-icon style="color: #2b9bc1;" size="large"><ChatLineSquare /></el-icon></el-button>
-                    <el-button circle>{{ post.likes }} <el-icon style="color: #2b9bc1;" size="large"><Pointer /></el-icon></el-button>
-                  </div>
-                </div>
-              </el-tab-pane>
-              <el-tab-pane>
-                <template #label>
-        <span class="custom-tabs-label">
-          <el-icon style="margin-right: 5px;"><ChatDotSquare /></el-icon>
-          <span>跟帖数</span>
-        </span>
-                </template>
-                <div v-for="(post, index) in postsForFollow" :key="index" class="post-card">
-                  <div class="post-header">
-                    <img :src="post.user.avatar" alt="User Avatar" class="avatar" />
-                    <span>{{ post.user.username }}</span>
-                    <span>{{ post.user.fans }} 粉丝 | {{ post.user.posts }} 帖子</span>
-                    <el-button size="small" type="primary" round>关注</el-button>
-                  </div>
-                  <div class="post-content">
-                    <el-tag type="info">{{ post.category }}</el-tag>
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.content }}</p>
-                  </div>
-                  <div class="post-footer">
-                    <span>{{ post.timeAgo }}</span>
-                    <el-button  circle><el-icon style="color: #2b9bc1;" size="large"><Star /></el-icon></el-button>
-                    <el-button  circle><el-icon style="color: #2b9bc1;" size="large"><ChatLineSquare /></el-icon></el-button>
-                    <el-button circle>{{ post.likes }} <el-icon style="color: #2b9bc1;" size="large"><Pointer /></el-icon></el-button>
-                  </div>
-                </div>
-              </el-tab-pane>
-            </el-tabs>
+            <el-table :data="tableData" stripe style="width: 100%; max-height: 1200px">
+              <el-table-column prop="date" label="时间" width="180" />
+              <el-table-column prop="name" label="回复人" width="180" />
+              <el-table-column prop="address" label="回复内容" />
+            </el-table>
 
             <div style="margin-top: 20px" class="demo-pagination-block">
 
@@ -243,7 +148,6 @@
                   </div>
                 </template>
               </el-dialog>
-
             </div>
             <div class="sidebar-section">
               <el-divider style="margin-bottom: 0"/>
@@ -287,23 +191,36 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import {onMounted, reactive} from "vue";
-import {Calendar, ChatDotSquare, ChatLineSquare, Pointer, Star, Timer} from "@element-plus/icons-vue";
+import {Calendar, ChatDotSquare, ChatLineSquare, Pointer, Star} from "@element-plus/icons-vue";
 import { ElMessageBox, ElSwitch } from 'element-plus'
 import { h, ref } from 'vue'
 // import {Delete, Edit, Search, Share, View} from "@element-plus/icons-vue";
 
+const data = reactive(
+    {
 
+      info:{
+        name:"张秋润",
+        id:"202202433016",
+        grade:"大三",
+        academy:"计算机学院"
+      },
+      box: {
+        width: '200px',
+        height: '100px',
+        backgroundColor: "yellow",
+      },
+      img:'https://img1.baidu.com/it/u=1466043940,779429976&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+    }
+)
 onMounted(()=>{
   console.log("页面加载完成")
 })
 
 export default defineComponent({
   name: 'Sidebar',
-  components: {Timer, ChatLineSquare, Pointer, ChatDotSquare, Star, Calendar},
+  components: {ChatLineSquare, Pointer, ChatDotSquare, Star, Calendar},
   setup() {
-
-
-
 
     const userInfo = {
       name: '大勇',
@@ -330,7 +247,6 @@ export default defineComponent({
     }
 
 
-
     const data = () => ( {
 
       tableData: [
@@ -355,10 +271,9 @@ export default defineComponent({
           address: 'No. 189, Grove St, Los Angeles',
         },
       ],
-      activeIndex: ref('1'),
-      activeTab: ref('time'),
-      categoryTab: ref('all'),
-
+      activeIndex: '1',
+      activeTab: 'time',
+      categoryTab: 'all',
       searchData:ref(''),
       postData:ref({user:{avatar:'',username:'',fans:0,posts:0},category:'',title:'',content:'',timeAgo:'',likes:0}),
       selectData:ref(''),
@@ -371,7 +286,7 @@ export default defineComponent({
         getBack:2,
         follow:3,
       },
-      postsForTime: [
+      posts: [
         {
           user: {
             avatar: 'https://ww4.sinaimg.cn/mw690/008apmBfgy1hyd10ozzjnj30u00u0q4k.jpg ',
@@ -394,63 +309,7 @@ export default defineComponent({
           },
           category: '吐槽',
           title: '"吐槽平台"上线了，欢迎大家使用并吐槽！',
-          content: '"吐槽平台"(按时间分布)上线了，欢迎大家使用并吐槽！',
-          timeAgo: '4天前',
-          likes: 1,
-        },
-      ],
-      postsForLikes: [
-        {
-          user: {
-            avatar: 'https://ww4.sinaimg.cn/mw690/008apmBfgy1hyd10ozzjnj30u00u0q4k.jpg ',
-            username: '用户vdbroqa',
-            fans: 24,
-            posts: 15,
-          },
-          category: '餐饮',
-          title: '食堂是不是可以提供免费凉茶？',
-          content: '最近气温过高，食堂是不是可以增加多点饮品，比如免费的凉茶？',
-          timeAgo: '7分钟前',
-          likes: 1,
-        },
-        {
-          user: {
-            avatar: 'https://img1.baidu.com/it/u=1466043940,779429976&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500 ',
-            username: '大勇',
-            fans: 457,
-            posts: 1,
-          },
-          category: '吐槽',
-          title: '"吐槽平台"上线了，欢迎大家使用并吐槽！',
-          content: '"吐槽平台"(按点赞数分布)上线了，欢迎大家使用并吐槽！',
-          timeAgo: '4天前',
-          likes: 1,
-        },
-      ],
-      postsForFollow: [
-        {
-          user: {
-            avatar: 'https://ww4.sinaimg.cn/mw690/008apmBfgy1hyd10ozzjnj30u00u0q4k.jpg ',
-            username: '用户vdbroqa',
-            fans: 24,
-            posts: 15,
-          },
-          category: '餐饮',
-          title: '食堂是不是可以提供免费凉茶？',
-          content: '最近气温过高，食堂是不是可以增加多点饮品，比如免费的凉茶？',
-          timeAgo: '7分钟前',
-          likes: 1,
-        },
-        {
-          user: {
-            avatar: 'https://img1.baidu.com/it/u=1466043940,779429976&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500 ',
-            username: '大勇',
-            fans: 457,
-            posts: 1,
-          },
-          category: '吐槽',
-          title: '"吐槽平台"上线了，欢迎大家使用并吐槽！',
-          content: '"吐槽平台"(按跟帖数分布)上线了，欢迎大家使用并吐槽！',
+          content: '"吐槽平台"上线了，欢迎大家使用并吐槽！',
           timeAgo: '4天前',
           likes: 1,
         },
@@ -470,7 +329,7 @@ export default defineComponent({
         },
       ]
 
-    });
+    })
     const dialogTableVisible = ref(false)
     const dialogFormVisible = ref(false)
     const formLabelWidth = '140px'
@@ -574,6 +433,9 @@ export default defineComponent({
   margin-top: 10px;
 }
 
+.sidebar-section {
+  margin-top: 20px;
+}
 /* 去除 router-link 的下划线 */
 .menu-link {
   text-decoration: none;
@@ -588,13 +450,10 @@ export default defineComponent({
   color: #000; /* 激活时字体颜色变深 */
 }
 
-
-
 .demo-pagination-block + .demo-pagination-block {
   margin-top: 10px;
 }
 .demo-pagination-block .demonstration {
   margin-bottom: 16px;
 }
-
 </style>
